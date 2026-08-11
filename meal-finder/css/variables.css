@@ -1,0 +1,95 @@
+/* ==========================================================================
+   Design Tokens
+   8px grid · Poppins (display) + Inter (body/UI)
+   Brand: warm orange gradient on ink-navy / cloud-white
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root{
+  /* ---- brand ---- */
+  --color-primary: #ff6b35;
+  --color-primary-light: #ff9f43;
+  --gradient-primary: linear-gradient(135deg, #ff6b35 0%, #ff9f43 100%);
+  --gradient-primary-soft: linear-gradient(135deg, rgba(255,107,53,0.14) 0%, rgba(255,159,67,0.14) 100%);
+
+  /* ---- surfaces (light theme, default) ---- */
+  --color-bg: #F8FAFC;
+  --color-bg-alt: #eef1f6;
+  --color-surface: #ffffff;
+  --color-surface-raised: #ffffff;
+  --color-ink: #101828;
+  --color-ink-soft: #475467;
+  --color-ink-faint: #98A2B3;
+  --color-border: rgba(16,24,40,0.08);
+  --color-border-strong: rgba(16,24,40,0.14);
+
+  --glass-bg: rgba(255,255,255,0.62);
+  --glass-bg-strong: rgba(255,255,255,0.86);
+  --glass-border: rgba(255,255,255,0.5);
+  --glass-blur: 18px;
+
+  --shadow-xs: 0 1px 2px rgba(16,24,40,0.06);
+  --shadow-sm: 0 2px 8px rgba(16,24,40,0.08);
+  --shadow-md: 0 8px 24px -8px rgba(16,24,40,0.18);
+  --shadow-lift: 0 20px 40px -16px rgba(255,107,53,0.35);
+  --shadow-glow: 0 0 0 1px rgba(255,107,53,0.15), 0 12px 32px -8px rgba(255,107,53,0.28);
+
+  --overlay-scrim: rgba(16,24,40,0.55);
+
+  /* ---- type ---- */
+  --font-display: 'Poppins', 'Inter', sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+
+  /* ---- 8px grid ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* ---- radii ---- */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+
+  /* ---- motion ---- */
+  --ease-out: cubic-bezier(.16,1,.3,1);
+  --ease-spring: cubic-bezier(.34,1.56,.64,1);
+  --dur-fast: 160ms;
+  --dur-base: 280ms;
+  --dur-slow: 480ms;
+
+  --header-h: 76px;
+}
+
+/* ---- dark theme ---- */
+[data-theme="dark"]{
+  --color-bg: #0d1320;
+  --color-bg-alt: #101828;
+  --color-surface: #161f30;
+  --color-surface-raised: #1b2537;
+  --color-ink: #F8FAFC;
+  --color-ink-soft: #B4BCCB;
+  --color-ink-faint: #6b7688;
+  --color-border: rgba(248,250,252,0.08);
+  --color-border-strong: rgba(248,250,252,0.14);
+
+  --glass-bg: rgba(22,31,48,0.62);
+  --glass-bg-strong: rgba(22,31,48,0.88);
+  --glass-border: rgba(248,250,252,0.08);
+
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-sm: 0 2px 10px rgba(0,0,0,0.35);
+  --shadow-md: 0 10px 28px -10px rgba(0,0,0,0.55);
+  --shadow-lift: 0 22px 44px -16px rgba(255,107,53,0.28);
+  --shadow-glow: 0 0 0 1px rgba(255,159,67,0.18), 0 14px 34px -8px rgba(255,107,53,0.35);
+
+  --overlay-scrim: rgba(5,8,14,0.7);
+}

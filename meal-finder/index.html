@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Munch — Discover Delicious Recipes</title>
+<meta name="description" content="Search thousands of recipes using ingredients you already have.">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ===================== Header ===================== -->
+<header class="site-header">
+  <div class="container">
+    <a href="#" class="brand"><span class="brand-mark"><i class="fas fa-utensils"></i></span>Munch</a>
+    <div class="header-actions">
+      <button class="btn-icon" id="fav-nav-btn" aria-label="View favorites" style="position:relative;">
+        <i class="fas fa-heart"></i>
+        <span class="fav-count-badge" id="fav-count-badge">0</span>
+      </button>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+        <span class="knob"><i class="fas fa-moon"></i></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== Hero ===================== -->
+<section class="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <div class="container hero-inner">
+    <span class="eyebrow"><i class="fas fa-sparkles"></i> Powered by TheMealDB</span>
+    <h1 class="hero-title">Discover <span class="accent">Delicious</span> Recipes</h1>
+    <p class="hero-subtitle">Tell us what's in your kitchen — search one ingredient or several — and we'll find recipes you can actually make.</p>
+
+    <div class="hero-search">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" id="search-input" placeholder="Try “chicken” or “chicken, rice, egg”" autocomplete="off" aria-label="Search by ingredient(s)">
+      <button type="button" class="search-btn" id="search-btn" aria-label="Search">
+        <i class="fas fa-search"></i>
+        <span class="spinner" aria-hidden="true"></span>
+        <span class="search-btn-label">Search</span>
+      </button>
+      <div class="search-suggestions hidden" id="search-suggestions"></div>
+    </div>
+    <p class="hero-search-hint">Tip: separate multiple ingredients with commas — we'll rank recipes by how many of them match.</p>
+
+    <div class="chip-row" id="ingredient-chips"></div>
+
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">50K+</div><div class="stat-label">Recipes</div></div>
+      <div class="stat"><div class="stat-num">100+</div><div class="stat-label">Categories</div></div>
+      <div class="stat"><div class="stat-num">Worldwide</div><div class="stat-label">Cuisine</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- ===================== Recipe of the Day ===================== -->
+  <section class="section reveal" aria-label="Recipe of the day">
+    <div class="rotd-card" id="recipe-of-day">
+      <div class="skeleton-media" style="aspect-ratio:16/9;"></div>
+      <div class="rotd-content"><div class="skeleton-line w-40" style="background:rgba(255,255,255,0.3);"></div></div>
+    </div>
+  </section>
+
+  <!-- ===================== Popular Categories ===================== -->
+  <section class="section reveal">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Browse</span>
+        <h2 class="section-title">Popular Categories</h2>
+      </div>
+      <button class="btn btn-ghost" id="surprise-btn"><i class="fas fa-dice"></i> Surprise me</button>
+    </div>
+    <div class="category-strip" id="category-strip">
+      <div class="skeleton-card" style="width:150px; flex:0 0 auto;"><div class="skeleton-media"></div></div>
+      <div class="skeleton-card" style="width:150px; flex:0 0 auto;"><div class="skeleton-media"></div></div>
+      <div class="skeleton-card" style="width:150px; flex:0 0 auto;"><div class="skeleton-media"></div></div>
+    </div>
+  </section>
+
+  <!-- ===================== Search Results ===================== -->
+  <section class="section" id="meal-results-section">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Results</span>
+        <h2 class="section-title">Find Meals For Your Ingredients</h2>
+      </div>
+    </div>
+
+    <p class="results-count" id="results-count"></p>
+
+    <div id="meal" class="meal-grid">
+      <div class="state-block">
+        <div class="state-icon"><i class="fas fa-bowl-food"></i></div>
+        <h3>What's in your kitchen?</h3>
+        <p>Search an ingredient above, tap a popular chip, or browse a category to get started.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Favorites ===================== -->
+  <section class="section" id="favorites-section">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow"><i class="fas fa-heart"></i> Saved</span>
+        <h2 class="section-title">Your Favorites</h2>
+      </div>
+    </div>
+    <div id="favorites-grid" class="meal-grid"></div>
+  </section>
+
+</div>
+
+<!-- ===================== Footer ===================== -->
+<footer class="site-footer">
+  <div class="brand"><span class="brand-mark"><i class="fas fa-utensils"></i></span>Munch</div>
+  <p>Recipe data courtesy of TheMealDB · Built for home cooks everywhere.</p>
+</footer>
+
+<!-- ===================== Recipe Drawer ===================== -->
+<div class="drawer-scrim" id="drawer-scrim"></div>
+<aside class="recipe-drawer" id="recipe-drawer" aria-label="Recipe details">
+  <button type="button" class="recipe-close-btn" id="recipe-close-btn" aria-label="Close recipe">
+    <i class="fas fa-times"></i>
+  </button>
+  <div class="meal-details-content" id="recipe-drawer-content"></div>
+</aside>
+
+<!-- ===================== Toasts ===================== -->
+<div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+
+<!-- ===================== Back to top ===================== -->
+<button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

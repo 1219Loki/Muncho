@@ -1,0 +1,109 @@
+/* ==========================================================================
+   Animations — fade/slide reveals, orbiting hero chips, skeleton shimmer,
+   button ripple, heart pop, toast slide, spinner
+   ========================================================================== */
+
+@keyframes fadeIn{
+  from{ opacity:0; }
+  to{ opacity:1; }
+}
+
+@keyframes slideUp{
+  from{ opacity:0; transform: translateY(28px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+@keyframes slideDown{
+  from{ opacity:0; transform: translateY(-16px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+@keyframes scaleIn{
+  from{ opacity:0; transform: scale(.92); }
+  to{ opacity:1; transform: scale(1); }
+}
+
+@keyframes drawerIn{
+  from{ transform: translateX(100%); }
+  to{ transform: translateX(0); }
+}
+
+@keyframes scrimIn{
+  from{ opacity:0; }
+  to{ opacity:1; }
+}
+
+@keyframes orbit{
+  from{ transform: rotate(0deg) translateX(var(--orbit-radius,150px)) rotate(0deg); }
+  to{ transform: rotate(360deg) translateX(var(--orbit-radius,150px)) rotate(-360deg); }
+}
+
+@keyframes floatY{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-10px); }
+}
+
+@keyframes shimmer{
+  0%{ background-position: -200% 0; }
+  100%{ background-position: 200% 0; }
+}
+
+@keyframes spin{
+  to{ transform: rotate(360deg); }
+}
+
+@keyframes ripple{
+  to{ transform: scale(3); opacity:0; }
+}
+
+@keyframes heartPop{
+  0%{ transform: scale(1); }
+  30%{ transform: scale(1.5); }
+  55%{ transform: scale(0.85); }
+  100%{ transform: scale(1); }
+}
+
+@keyframes heartBurst{
+  0%{ transform: scale(0.3); opacity:1; }
+  100%{ transform: scale(2.2); opacity:0; }
+}
+
+@keyframes toastIn{
+  from{ opacity:0; transform: translateY(12px) scale(.96); }
+  to{ opacity:1; transform: translateY(0) scale(1); }
+}
+
+@keyframes pulseGlow{
+  0%,100%{ box-shadow: 0 0 0 0 rgba(255,107,53,0.35); }
+  50%{ box-shadow: 0 0 0 10px rgba(255,107,53,0); }
+}
+
+@keyframes gradientShift{
+  0%{ background-position: 0% 50%; }
+  50%{ background-position: 100% 50%; }
+  100%{ background-position: 0% 50%; }
+}
+
+/* ---- reveal-on-scroll utility (paired with IntersectionObserver) ---- */
+.reveal{
+  opacity:0;
+  transform: translateY(24px);
+  transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
+}
+.reveal.is-visible{
+  opacity:1;
+  transform: translateY(0);
+}
+
+.anim-fadeIn{ animation: fadeIn var(--dur-base) var(--ease-out) both; }
+.anim-slideUp{ animation: slideUp var(--dur-slow) var(--ease-out) both; }
+.anim-scaleIn{ animation: scaleIn var(--dur-base) var(--ease-spring) both; }
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
