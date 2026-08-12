@@ -1,4 +1,4 @@
-# Meal Finder
+# # Muncho – Recipe Finder
 
 A responsive recipe finder web application that helps users discover meals based on the ingredients they have. The application uses **TheMealDB API** to fetch recipes and display detailed cooking information.
 
@@ -33,7 +33,8 @@ A responsive recipe finder web application that helps users discover meals based
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/meal-finder.git
+git clone https://github.com/1219Loki/Muncho.git
+cd Muncho
 ```
 
 2. Open the project in VS Code.
